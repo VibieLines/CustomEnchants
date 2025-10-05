@@ -1,0 +1,41 @@
+package vibie.customenchants.register;
+
+import java.util.HashMap;
+import java.util.Map;
+import net.minecraft.util.Identifier;
+import vibie.customenchants.Vibieces;
+
+public class EnchantmentCosts {
+    public static final Map<Identifier, Integer> ENCHANTMENT_COSTS = new HashMap<>();
+    public static final Map<Identifier, Integer> BASE_COSTS = new HashMap<>();
+
+    static {
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "lifesteal"), 2);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "amplifier"), 3);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "clarity"), 1);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "implants"), 2);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "vampire"), 1);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "poison_aspect"), 2);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "sharper"), 1);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "hearts"), 2);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "siphon"), 12);
+
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "lifesteal"), 3);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "amplifier"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "clarity"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "implants"), 3);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "vampire"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "poison_aspect"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "sharper"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "hearts"), 4);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "siphon"), 4);
+    }
+
+    public static int getCost(Identifier enchantmentId) {
+        return ENCHANTMENT_COSTS.getOrDefault(enchantmentId, 1);
+    }
+
+    public static int getBaseCost(Identifier enchantmentId) {
+        return BASE_COSTS.getOrDefault(enchantmentId, 3);
+    }
+}

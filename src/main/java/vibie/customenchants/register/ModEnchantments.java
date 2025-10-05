@@ -5,6 +5,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import vibie.customenchants.Vibieces;
+import vibie.customenchants.chestplate.HeartsEnchantment;
+import vibie.customenchants.chestplate.HeartsHandler.HeartsEventHandler;
+import vibie.customenchants.helmet.ClarityEnchantment;
+
 import vibie.customenchants.helmet.ImplantsEnchantment;
 import vibie.customenchants.weapons.*;
 
@@ -51,6 +55,18 @@ public class ModEnchantments {
             new ImplantsEnchantment()
     );
 
+    public static final Enchantment CLARITY = Registry.register(
+            Registries.ENCHANTMENT,
+            new Identifier(Vibieces.MOD_ID, "clarity"),
+            new ClarityEnchantment()
+    );
+
+    public static final Enchantment HEARTS = Registry.register(
+            Registries.ENCHANTMENT,
+            new Identifier(Vibieces.MOD_ID, "hearts"),
+            new HeartsEnchantment()
+    );
+
     public static void register() {
         SiphonEnchantment.registerAttackCallback();
         SiphonEnchantment.registerKillCallback();
@@ -59,5 +75,8 @@ public class ModEnchantments {
         PoisonAspectEnchantment.registerAttackCallback();
         AmplifierEnchantment.registerAttackCallback();
         ImplantsEnchantment.registerTickCallback();
+        ClarityEnchantment.registerTickCallback();
+        HeartsEnchantment.registerTickCallback();
+        HeartsEventHandler.register();
     }
 }
