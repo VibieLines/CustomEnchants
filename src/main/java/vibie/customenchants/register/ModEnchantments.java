@@ -8,8 +8,8 @@ import vibie.customenchants.Vibieces;
 import vibie.customenchants.chestplate.HeartsEnchantment;
 import vibie.customenchants.chestplate.HeartsHandler.HeartsEventHandler;
 import vibie.customenchants.helmet.ClarityEnchantment;
-
 import vibie.customenchants.helmet.ImplantsEnchantment;
+import vibie.customenchants.pickaxes.ExplosiveEnchantment;
 import vibie.customenchants.weapons.*;
 
 public class ModEnchantments {
@@ -67,6 +67,12 @@ public class ModEnchantments {
             new HeartsEnchantment()
     );
 
+    public static final Enchantment EXPLOSIVE = Registry.register(
+            Registries.ENCHANTMENT,
+            new Identifier(Vibieces.MOD_ID, "explosive"),
+            new ExplosiveEnchantment()
+    );
+
     public static void register() {
         SiphonEnchantment.registerAttackCallback();
         SiphonEnchantment.registerKillCallback();
@@ -78,5 +84,6 @@ public class ModEnchantments {
         ClarityEnchantment.registerTickCallback();
         HeartsEnchantment.registerTickCallback();
         HeartsEventHandler.register();
+        ExplosiveEnchantment.registerAttackCallback();
     }
 }
