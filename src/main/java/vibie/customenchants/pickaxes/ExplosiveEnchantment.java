@@ -1,11 +1,13 @@
 package vibie.customenchants.pickaxes;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.MiningToolItem;
 import net.minecraft.world.World;
 import vibie.customenchants.register.ModEnchantments;
 
@@ -51,11 +53,16 @@ public class ExplosiveEnchantment extends Enchantment {
                 ItemStack tool = player.getMainHandStack();
                 int level = EnchantmentHelper.getLevel(ModEnchantments.EXPLOSIVE, tool);
 
-                if (level > 0) {
+                if (level > 0 && PickaxeOnly(state, tool)) {
                     float power = level * 2.0f;
                     world.createExplosion(player, pos.getX(), pos.getY(), pos.getZ(), power, World.ExplosionSourceType.MOB);
                 }
             }
         });
+    }
+
+    private static boolean PickaxeOnly(BlockState state, ItemStack tool) {
+        return tool.getItem() instanceof MiningToolItem miningTool &&
+                miningTool.isSuitableFor(state);
     }
 }
