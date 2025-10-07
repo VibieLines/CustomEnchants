@@ -26,17 +26,7 @@ public class HeartsEnchantment extends Enchantment {
     public HeartsEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[]{EquipmentSlot.CHEST});
     }
-
-    @Override
-    public int getMinPower(int level) {
-        return 99; // Minimum cost in anvil
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return 99; // Maximum cost in anvil
-    }
-
+// forgot to replace testing stuff
     @Override
     public int getMaxLevel() {
         return 5;

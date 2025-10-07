@@ -1,19 +1,20 @@
-package vibie.customenchants.helmet;
+package vibie.customenchants.leggings;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import vibie.customenchants.register.ModEnchantments;
 
-public class ImplantsEnchantment extends Enchantment {
+public class BoltEnchantment extends Enchantment {
 
-    public ImplantsEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[]{EquipmentSlot.HEAD});
+    public BoltEnchantment() {
+        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_LEGS, new EquipmentSlot[]{EquipmentSlot.LEGS});
     }
 
     @Override
@@ -28,7 +29,7 @@ public class ImplantsEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -55,14 +56,19 @@ public class ImplantsEnchantment extends Enchantment {
     }
 
     private static void tick(ServerPlayerEntity player) {
-        if (player.getWorld().getTime() % 20 == 0) {
-            ItemStack helmet = player.getInventory().getArmorStack(3);
-            int level = EnchantmentHelper.getLevel(ModEnchantments.IMPLANTS, helmet);
+        ItemStack leggings = player.getInventory().getArmorStack(1);
+        int level = EnchantmentHelper.getLevel(ModEnchantments.BOLT, leggings);
 
-            if (level > 0) {
-                float hungerAmount = 1.5f * level;
-                player.getHungerManager().add((int) hungerAmount, 0.1f);
-            }
+        if (level > 0) {
+            int speedLevel = level;
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.SPEED,
+                    100,
+                    speedLevel - 1,
+                    false,
+                    false,
+                    true
+            ));
         }
     }
 }
