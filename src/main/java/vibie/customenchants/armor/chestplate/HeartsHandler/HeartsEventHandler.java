@@ -1,11 +1,9 @@
-package vibie.customenchants.chestplate.HeartsHandler;
+package vibie.customenchants.armor.chestplate.HeartsHandler;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
-import vibie.customenchants.chestplate.HeartsEnchantment;
+import vibie.customenchants.armor.chestplate.HeartsEnchantment;
 
 public class HeartsEventHandler {
 

@@ -67,6 +67,19 @@ public class VibiecesCommand {
                 "End City & Nether Fortress chests (Very rare btw)",
                 "Max Level: 3");
 
+        sendEnchantmentEntry(source, "Burst",
+                "Launch upward when attacking while crouching and offground (axe only)",
+                "End City & Nether Fortress chests",
+                "Max Level: 2");
+
+        source.sendMessage(Text.literal(""));
+        source.sendMessage(Text.literal("BOWS:").formatted(Formatting.DARK_GREEN, Formatting.BOLD));
+
+        sendEnchantmentEntry(source, "Sniper",
+                "Increases arrow speed",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 2");
+
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("HELMETS:").formatted(Formatting.BLUE, Formatting.BOLD));
 

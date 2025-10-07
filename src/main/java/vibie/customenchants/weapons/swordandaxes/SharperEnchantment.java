@@ -1,4 +1,4 @@
-package vibie.customenchants.weapons;
+package vibie.customenchants.weapons.swordandaxes;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;

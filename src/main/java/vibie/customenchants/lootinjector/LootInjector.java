@@ -54,6 +54,19 @@ public class LootInjector {
                                 .weight(1)
                         );
                 tableBuilder.pool(axeMacePool.build());
+
+                LootPool.Builder burstPool = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.05f))
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:burst", 1)))
+                                .weight(3)
+                        )
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:burst", 2)))
+                                .weight(2)
+                        );
+                tableBuilder.pool(burstPool.build());
             }
         });
     }

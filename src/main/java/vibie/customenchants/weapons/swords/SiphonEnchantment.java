@@ -1,4 +1,4 @@
-package vibie.customenchants.weapons;
+package vibie.customenchants.weapons.swords;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;

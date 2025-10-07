@@ -1,4 +1,4 @@
-package vibie.customenchants.boots;
+package vibie.customenchants.armor.boots;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.block.BlockState;

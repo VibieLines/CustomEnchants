@@ -1,4 +1,4 @@
-package vibie.customenchants.weapons;
+package vibie.customenchants.weapons.swords;
 
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.enchantment.Enchantment;
@@ -7,7 +7,6 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSources;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ActionResult;

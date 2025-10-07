@@ -1,4 +1,4 @@
-package vibie.customenchants.axes;
+package vibie.customenchants.tools.axes;
 
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -65,19 +65,23 @@ public class AxeMace extends Enchantment {
                         float bonus = actualFallDistance * 0.18f * level;
 
                         if (bonus > 0) {
-                            world.getServer().execute(() -> {
-                                try {
-                                    Thread.sleep(50);
-                                } catch (InterruptedException e) {
-                                    Thread.currentThread().interrupt();
-                                }
-                                LivingEntity target = (LivingEntity) entity;
-                                if (target.isAlive()) {
-                                    target.hurtTime = 0;
-                                    target.timeUntilRegen = 0;
-                                    target.damage(world.getDamageSources().playerAttack(player), bonus);
-                                }
-                            });
+                            float charge = player.getAttackCooldownProgress(0.5f);
+
+                            if (charge > 0.65f) {
+                                world.getServer().execute(() -> {
+                                    try {
+                                        Thread.sleep(50);
+                                    } catch (InterruptedException e) {
+                                        Thread.currentThread().interrupt();
+                                    }
+                                    LivingEntity target = (LivingEntity) entity;
+                                    if (target.isAlive()) {
+                                        target.hurtTime = 0;
+                                        target.timeUntilRegen = 0;
+                                        target.damage(world.getDamageSources().playerAttack(player), bonus);
+                                    }
+                                });
+                            }
                         }
                     }
                 }

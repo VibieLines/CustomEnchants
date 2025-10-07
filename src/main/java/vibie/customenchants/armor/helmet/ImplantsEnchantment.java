@@ -1,20 +1,19 @@
-package vibie.customenchants.leggings;
+package vibie.customenchants.armor.helmet;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import vibie.customenchants.register.ModEnchantments;
 
-public class BoltEnchantment extends Enchantment {
+public class ImplantsEnchantment extends Enchantment {
 
-    public BoltEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_LEGS, new EquipmentSlot[]{EquipmentSlot.LEGS});
+    public ImplantsEnchantment() {
+        super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[]{EquipmentSlot.HEAD});
     }
 
     @Override
@@ -29,7 +28,7 @@ public class BoltEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -56,19 +55,14 @@ public class BoltEnchantment extends Enchantment {
     }
 
     private static void tick(ServerPlayerEntity player) {
-        ItemStack leggings = player.getInventory().getArmorStack(1);
-        int level = EnchantmentHelper.getLevel(ModEnchantments.BOLT, leggings);
+        if (player.getWorld().getTime() % 20 == 0) {
+            ItemStack helmet = player.getInventory().getArmorStack(3);
+            int level = EnchantmentHelper.getLevel(ModEnchantments.IMPLANTS, helmet);
 
-        if (level > 0) {
-            int speedLevel = level;
-            player.addStatusEffect(new StatusEffectInstance(
-                    StatusEffects.SPEED,
-                    100,
-                    speedLevel - 1,
-                    false,
-                    false,
-                    true
-            ));
+            if (level > 0) {
+                float hungerAmount = 1.5f * level;
+                player.getHungerManager().add((int) hungerAmount, 0.1f);
+            }
         }
     }
 }

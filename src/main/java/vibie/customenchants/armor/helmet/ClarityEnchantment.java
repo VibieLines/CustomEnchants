@@ -1,4 +1,4 @@
-package vibie.customenchants.helmet;
+package vibie.customenchants.armor.helmet;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.enchantment.Enchantment;
