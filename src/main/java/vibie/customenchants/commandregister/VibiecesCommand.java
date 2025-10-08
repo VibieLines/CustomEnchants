@@ -59,6 +59,11 @@ public class VibiecesCommand {
                 "Enchanting Table, Villager Trades",
                 "Max Level: 3");
 
+        sendEnchantmentEntry(source, "Execution",
+                "Chance to instant kill enemies lower then 3 hearts",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 3, Incompatible with Vampire, Lifesteal, Sharper");
+
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("AXES:").formatted(Formatting.DARK_RED, Formatting.BOLD));
 

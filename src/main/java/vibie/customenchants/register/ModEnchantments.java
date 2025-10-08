@@ -30,6 +30,8 @@ public class ModEnchantments {
     public static final Enchantment VAMPIRE = register("vampire", new VampireEnchantment());
     public static final Enchantment POISON_ASPECT = register("poison_aspect", new PoisonAspectEnchantment());
     public static final Enchantment AMPLIFIER = register("amplifier", new AmplifierEnchantment());
+    public static final Enchantment EXECUTION = register("execution", new ExecutionEnchantment());
+
     // Sword + Axes
     public static final Enchantment SHARPER = register("sharper", new SharperEnchantment());
 
@@ -72,6 +74,7 @@ public class ModEnchantments {
         VampireEnchantment.registerAttackCallback();
         PoisonAspectEnchantment.registerAttackCallback();
         AmplifierEnchantment.registerAttackCallback();
+        ExecutionEnchantment.registerAttackCallback();
 
         //Axes
         AxeMace.registerAttackCallback();
