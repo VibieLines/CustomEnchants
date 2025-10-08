@@ -1,13 +1,14 @@
 package vibie.customenchants.commandregister;
 
 import com.mojang.brigadier.Command;
-import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 import static net.minecraft.server.command.CommandManager.literal;
+import static net.minecraft.server.command.CommandManager.argument;
 
 public class VibiecesCommand {
 
@@ -16,16 +17,42 @@ public class VibiecesCommand {
             dispatcher.register(literal("vibieces")
                     .executes(context -> {
                         ServerCommandSource source = context.getSource();
-                        sendEnchantmentInfo(source);
+                        sendPage(source, 1);
                         return Command.SINGLE_SUCCESS;
                     })
+                    .then(argument("page", IntegerArgumentType.integer(1, 4))
+                            .executes(context -> {
+                                ServerCommandSource source = context.getSource();
+                                int page = IntegerArgumentType.getInteger(context, "page");
+                                sendPage(source, page);
+                                return Command.SINGLE_SUCCESS;
+                            })
+                    )
             );
         });
     }
 
-    private static void sendEnchantmentInfo(ServerCommandSource source) {
+    private static void sendPage(ServerCommandSource source, int page) {
         source.sendMessage(Text.literal("Vibie's Custom Enchantments").formatted(Formatting.GOLD, Formatting.BOLD));
+        source.sendMessage(Text.literal("Page " + page + "/4 - Use /vibieces <page>").formatted(Formatting.GRAY));
 
+        switch (page) {
+            case 1:
+                sendWeaponsPage(source);
+                break;
+            case 2:
+                sendToolsPage(source);
+                break;
+            case 3:
+                sendArmorPage1(source);
+                break;
+            case 4:
+                sendArmorPage2(source);
+                break;
+        }
+    }
+
+    private static void sendWeaponsPage(ServerCommandSource source) {
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("WEAPONS:").formatted(Formatting.RED, Formatting.BOLD));
 
@@ -63,7 +90,9 @@ public class VibiecesCommand {
                 "Chance to instant kill enemies lower then 3 hearts",
                 "Enchanting Table, Villager Trades",
                 "Max Level: 3, Incompatible with Vampire, Lifesteal, Sharper");
+    }
 
+    private static void sendToolsPage(ServerCommandSource source) {
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("AXES:").formatted(Formatting.DARK_RED, Formatting.BOLD));
 
@@ -85,6 +114,16 @@ public class VibiecesCommand {
                 "Enchanting Table, Villager Trades",
                 "Max Level: 2");
 
+        source.sendMessage(Text.literal(""));
+        source.sendMessage(Text.literal("PICKAXES:").formatted(Formatting.GRAY, Formatting.BOLD));
+
+        sendEnchantmentEntry(source, "Explosive",
+                "Creates explosion when mining blocks",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 2");
+    }
+
+    private static void sendArmorPage1(ServerCommandSource source) {
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("HELMETS:").formatted(Formatting.BLUE, Formatting.BOLD));
 
@@ -115,7 +154,8 @@ public class VibiecesCommand {
                 "Pulls items toward you",
                 "Enchanting Table, Villager Trades",
                 "Max Level: 3");
-
+    }
+    private static void sendArmorPage2(ServerCommandSource source) {
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("LEGGINGS:").formatted(Formatting.YELLOW, Formatting.BOLD));
 
@@ -141,16 +181,6 @@ public class VibiecesCommand {
                 "Turns lava AND water, gives fire resistance",
                 "Buried Treasure chests",
                 "Max Level: 3");
-
-        source.sendMessage(Text.literal(""));
-        source.sendMessage(Text.literal("PICKAXES:").formatted(Formatting.GRAY, Formatting.BOLD));
-
-        sendEnchantmentEntry(source, "Explosive",
-                "Creates explosion when mining blocks",
-                "Enchanting Table, Villager Trades",
-                "Max Level: 2");
-
-        source.sendMessage(Text.literal(""));
     }
 
     private static void sendEnchantmentEntry(ServerCommandSource source, String name, String effect, String location, String notes) {
