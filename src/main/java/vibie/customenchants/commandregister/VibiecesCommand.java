@@ -106,6 +106,11 @@ public class VibiecesCommand {
                 "Enchanting Table, Villager Trades",
                 "Max Level: 1");
 
+        sendEnchantmentEntry(source, "Vacuum",
+                "Pulls items toward you",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 3");
+
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("LEGGINGS:").formatted(Formatting.YELLOW, Formatting.BOLD));
 
@@ -113,6 +118,11 @@ public class VibiecesCommand {
                 "Gives permanent Speed effect",
                 "Enchanting Table, Villager Trades",
                 "Max Level: 2");
+
+        sendEnchantmentEntry(source, "Armored",
+                "Adds +1 protection per level stacks with Protection",
+                "Warden drop 50%, Each level has a diff drop chance.",
+                "Max Level: 4");
 
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("BOOTS:").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD));

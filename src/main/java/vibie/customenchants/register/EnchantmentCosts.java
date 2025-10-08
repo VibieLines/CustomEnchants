@@ -27,7 +27,8 @@ public class EnchantmentCosts {
         ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "axemace"), 15);
         ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "burst"), 10);
         ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "sniper"), 6);
-
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "armored"), 10);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "vacuum"), 2);
 
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "lifesteal"), 3);
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "amplifier"), 2);
@@ -46,6 +47,8 @@ public class EnchantmentCosts {
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "axemace"), 4);
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "burst"), 4);
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "sniper"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "armored"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "vacuum"), 2);
     }
 
     public static int getCost(Identifier enchantmentId) {

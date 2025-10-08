@@ -5,6 +5,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import vibie.customenchants.Vibieces;
+import vibie.customenchants.armor.chestplate.VacuumEnchantment;
+import vibie.customenchants.armor.leggings.ArmoredEnchantment;
 import vibie.customenchants.tools.axes.AxeMace;
 import vibie.customenchants.tools.axes.BurstEnchantment;
 import vibie.customenchants.armor.boots.AllInOneWalkerEnchantment;
@@ -49,9 +51,11 @@ public class ModEnchantments {
     //Chestplates
     public static final Enchantment HEARTS = register("hearts", new HeartsEnchantment());
     public static final Enchantment BERSERKER = register("berserker", new BerserkerEnchantment());
+    public static final Enchantment VACUUM = register("vacuum", new VacuumEnchantment());
+
     //Leggings
     public static final Enchantment BOLT = register("bolt", new BoltEnchantment());
-
+    public static final Enchantment ARMORED = register("armored", new ArmoredEnchantment());
     //Boots
     public static final Enchantment LAVA_WALKER = register("lava_walker", new LavaWalkerEnchantment());
     public static final Enchantment ALL_IN_ONE_WALKER = register("all_in_one_walker", new AllInOneWalkerEnchantment());
@@ -86,12 +90,12 @@ public class ModEnchantments {
 
         //Chestplates
         HeartsEnchantment.registerTickCallback();
-        BerserkerEnchantment.registerTickCallback();
         HeartsEventHandler.register();
+        BerserkerEnchantment.registerTickCallback();
+        VacuumEnchantment.registerTickCallback();
 
         //Leggings
         BoltEnchantment.registerTickCallback();
-
         //Boots
         LavaWalkerEnchantment.registerTickCallback();
         AllInOneWalkerEnchantment.registerTickCallback();

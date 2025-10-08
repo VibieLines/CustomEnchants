@@ -15,6 +15,7 @@ public class LootInjector {
     private static final Identifier BURIED_TREASURE_CHEST = new Identifier("minecraft", "chests/buried_treasure");
     private static final Identifier END_CITY_CHEST = new Identifier("minecraft", "chests/end_city_treasure");
     private static final Identifier NETHER_FORTRESS_CHEST = new Identifier("minecraft", "chests/nether_bridge");
+    private static final Identifier WARDEN_LOOT = new Identifier("minecraft", "entities/warden");
 
     public static void registerLootpoolModifier() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -68,16 +69,39 @@ public class LootInjector {
                         );
                 tableBuilder.pool(burstPool.build());
             }
+
+            if (WARDEN_LOOT.equals(id)) {
+                LootPool.Builder armoredPool = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:armored", 1)))
+                                .conditionally(RandomChanceLootCondition.builder(0.5f))
+                        )
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:armored", 2)))
+                                .conditionally(RandomChanceLootCondition.builder(0.4f))
+                        )
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:armored", 3)))
+                                .conditionally(RandomChanceLootCondition.builder(0.3f))
+                        )
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:armored", 4)))
+                                .conditionally(RandomChanceLootCondition.builder(0.4f))
+                        );
+                tableBuilder.pool(armoredPool.build());
+            }
         });
     }
 
     private static NbtCompound createEnchantmentNbt(String enchantmentId, int level) {
         NbtCompound nbt = new NbtCompound();
         NbtList enchantments = new NbtList();
-        NbtCompound encantment = new NbtCompound();
-        encantment.putString("id", enchantmentId);
-        encantment.putInt("lvl", level);
-        enchantments.add(encantment);
+        NbtCompound enchantment = new NbtCompound();
+        enchantment.putString("id", enchantmentId);
+        enchantment.putInt("lvl", level);
+        enchantments.add(enchantment);
         nbt.put("StoredEnchantments", enchantments);
         return nbt;
     }
