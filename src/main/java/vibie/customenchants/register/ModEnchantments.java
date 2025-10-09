@@ -5,6 +5,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import vibie.customenchants.Vibieces;
+import vibie.customenchants.armor.boots.EndershiftEnchantment;
+import vibie.customenchants.armor.chestplate.ReviveEnchantment;
 import vibie.customenchants.armor.chestplate.VacuumEnchantment;
 import vibie.customenchants.armor.leggings.ArmoredEnchantment;
 import vibie.customenchants.tools.axes.AxeMace;
@@ -19,6 +21,7 @@ import vibie.customenchants.armor.helmet.ImplantsEnchantment;
 import vibie.customenchants.armor.leggings.BoltEnchantment;
 import vibie.customenchants.tools.pickaxes.ExplosiveEnchantment;
 import vibie.customenchants.weapons.bows.SniperEnchantment;
+import vibie.customenchants.weapons.curses.CurseOfWeaknessEnchantment;
 import vibie.customenchants.weapons.swordandaxes.SharperEnchantment;
 import vibie.customenchants.weapons.swords.*;
 
@@ -34,6 +37,7 @@ public class ModEnchantments {
 
     // Sword + Axes
     public static final Enchantment SHARPER = register("sharper", new SharperEnchantment());
+    public static final Enchantment CURSE_OF_WEAKNESS = register("curse_of_weakness", new CurseOfWeaknessEnchantment());
 
     //Axes
     public static final Enchantment AXEMACE = register("axemace", new AxeMace());
@@ -54,13 +58,14 @@ public class ModEnchantments {
     public static final Enchantment HEARTS = register("hearts", new HeartsEnchantment());
     public static final Enchantment BERSERKER = register("berserker", new BerserkerEnchantment());
     public static final Enchantment VACUUM = register("vacuum", new VacuumEnchantment());
-
+    public static final Enchantment REVIVE = register("revive", new ReviveEnchantment());
     //Leggings
     public static final Enchantment BOLT = register("bolt", new BoltEnchantment());
     public static final Enchantment ARMORED = register("armored", new ArmoredEnchantment());
     //Boots
     public static final Enchantment LAVA_WALKER = register("lava_walker", new LavaWalkerEnchantment());
     public static final Enchantment ALL_IN_ONE_WALKER = register("all_in_one_walker", new AllInOneWalkerEnchantment());
+    public static final Enchantment ENDERSHIFT = register("endershift", new EndershiftEnchantment());
 
     private static Enchantment register(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(Vibieces.MOD_ID, name), enchantment);
@@ -96,12 +101,14 @@ public class ModEnchantments {
         HeartsEventHandler.register();
         BerserkerEnchantment.registerTickCallback();
         VacuumEnchantment.registerTickCallback();
+        ReviveEnchantment.registerDamageCallback();
 
         //Leggings
         BoltEnchantment.registerTickCallback();
+
         //Boots
         LavaWalkerEnchantment.registerTickCallback();
         AllInOneWalkerEnchantment.registerTickCallback();
-
+        EndershiftEnchantment.registerTickCallback();
     }
 }

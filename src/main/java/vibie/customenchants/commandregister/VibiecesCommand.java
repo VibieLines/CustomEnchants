@@ -20,7 +20,7 @@ public class VibiecesCommand {
                         sendPage(source, 1);
                         return Command.SINGLE_SUCCESS;
                     })
-                    .then(argument("page", IntegerArgumentType.integer(1, 4))
+                    .then(argument("page", IntegerArgumentType.integer(1, 6))
                             .executes(context -> {
                                 ServerCommandSource source = context.getSource();
                                 int page = IntegerArgumentType.getInteger(context, "page");
@@ -34,7 +34,7 @@ public class VibiecesCommand {
 
     private static void sendPage(ServerCommandSource source, int page) {
         source.sendMessage(Text.literal("Vibie's Custom Enchantments").formatted(Formatting.GOLD, Formatting.BOLD));
-        source.sendMessage(Text.literal("Page " + page + "/4 - Use /vibieces <page>").formatted(Formatting.GRAY));
+        source.sendMessage(Text.literal("Page " + page + "/6 - Use /vibieces <page>").formatted(Formatting.GRAY));
 
         switch (page) {
             case 1:
@@ -49,6 +49,10 @@ public class VibiecesCommand {
             case 4:
                 sendArmorPage2(source);
                 break;
+            case 5:
+                sendCursesPage(source);
+                break;
+
         }
     }
 
@@ -143,7 +147,12 @@ public class VibiecesCommand {
         sendEnchantmentEntry(source, "Hearts",
                 "Increases max health (+2 hearts per level)",
                 "Craft with 2 Totems + 1 Enchanted Apple + 1 Book, Throw on ground to craft",
-                "Max Level: 5");
+                "Max Level: 5, Incompatible with Revive");
+
+        sendEnchantmentEntry(source, "Revive",
+                "Prevents death once, healing to 2 hearts with Regeneration, Absorption, Fire Resistance, and Resistance",
+                "Ancient City Loot",
+                "Max Level: 1, removed after activation, Halves durability, Incompatible with Hearts");
 
         sendEnchantmentEntry(source, "Berserker",
                 "Gives Strength based on low health",
@@ -181,6 +190,21 @@ public class VibiecesCommand {
                 "Turns lava AND water, gives fire resistance",
                 "Buried Treasure chests",
                 "Max Level: 3");
+
+        sendEnchantmentEntry(source, "Endershift",
+                "Automatically teleports you away when below 3 hearts",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 3");
+    }
+
+    private static void sendCursesPage(ServerCommandSource source) {
+        source.sendMessage(Text.literal(""));
+        source.sendMessage(Text.literal("CURSES:").formatted(Formatting.DARK_PURPLE, Formatting.BOLD));
+
+        sendEnchantmentEntry(source, "Curse of Weakness",
+                "Reduces attack damage by 0.65 per level",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 3, Cursed, Incompatible with Sharper");
     }
 
     private static void sendEnchantmentEntry(ServerCommandSource source, String name, String effect, String location, String notes) {

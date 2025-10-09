@@ -56,9 +56,9 @@ public class VampireEnchantment extends Enchantment {
                 ItemStack weapon = player.getMainHandStack();
                 int level = EnchantmentHelper.getLevel(ModEnchantments.VAMPIRE, weapon);
 
-                if (level > 0 && cooldown >= 0.9f) {
+                if (level > 0 && cooldown >= 0.85f) {
                     Random random = world.getRandom();
-                    if (random.nextFloat() < 0.25f) {
+                    if (random.nextFloat() < 0.35f) {
                         float amount = 0.50f * level;
                         world.getServer().execute(() -> {
                             target.hurtTime = 0;

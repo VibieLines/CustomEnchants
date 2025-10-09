@@ -47,6 +47,11 @@ public class HeartsEnchantment extends Enchantment {
         return false;
     }
 
+    @Override
+    public boolean canAccept(Enchantment other) {
+        return !(other instanceof ReviveEnchantment) && super.canAccept(other);
+    }
+
     public static void registerTickCallback() {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {

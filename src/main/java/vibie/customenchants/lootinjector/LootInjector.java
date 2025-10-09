@@ -16,9 +16,20 @@ public class LootInjector {
     private static final Identifier END_CITY_CHEST = new Identifier("minecraft", "chests/end_city_treasure");
     private static final Identifier NETHER_FORTRESS_CHEST = new Identifier("minecraft", "chests/nether_bridge");
     private static final Identifier WARDEN_LOOT = new Identifier("minecraft", "entities/warden");
+    private static final Identifier ANCIENT_CITY_CHEST = new Identifier("minecraft", "chests/ancient_city");
 
     public static void registerLootpoolModifier() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if (ANCIENT_CITY_CHEST.equals(id)) {
+                LootPool.Builder revivePool = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.05f))
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetNbtLootFunction.builder(createEnchantmentNbt("vibieces:revive", 1)))
+                        );
+                tableBuilder.pool(revivePool.build());
+            }
+
             if (BURIED_TREASURE_CHEST.equals(id)) {
                 LootPool.Builder allInOneWalkerPool = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))

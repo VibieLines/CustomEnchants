@@ -57,7 +57,7 @@ public class SniperEnchantment extends Enchantment {
             int level = EnchantmentHelper.getLevel(ModEnchantments.SNIPER, bow);
             if (level <= 0) return;
 
-            double speedMultiplier = 1.0 + (0.4 * level);
+            double speedMultiplier = 1.0 + (0.25 * level);
 
             arrow.setVelocity(
                     arrow.getVelocity().x * speedMultiplier,
