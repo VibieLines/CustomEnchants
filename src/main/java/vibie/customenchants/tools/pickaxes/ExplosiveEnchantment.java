@@ -54,7 +54,7 @@ public class ExplosiveEnchantment extends Enchantment {
                 int level = EnchantmentHelper.getLevel(ModEnchantments.EXPLOSIVE, tool);
 
                 if (level > 0 && PickaxeOnly(state, tool)) {
-                    float power = level * 2.0f;
+                    float power = level * 2.5f;
                     world.createExplosion(player, pos.getX(), pos.getY(), pos.getZ(), power, World.ExplosionSourceType.MOB);
                 }
             }

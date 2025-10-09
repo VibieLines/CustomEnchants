@@ -38,25 +38,27 @@ public class VibiecesCommand {
 
         switch (page) {
             case 1:
-                sendWeaponsPage(source);
+                sendWeaponsPage1(source);
                 break;
             case 2:
-                sendToolsPage(source);
+                sendWeaponsPage2(source);
                 break;
             case 3:
-                sendArmorPage1(source);
+                sendToolsPage(source);
                 break;
             case 4:
-                sendArmorPage2(source);
+                sendArmorPage1(source);
                 break;
             case 5:
+                sendArmorPage2(source);
+                break;
+            case 6:
                 sendCursesPage(source);
                 break;
-
         }
     }
 
-    private static void sendWeaponsPage(ServerCommandSource source) {
+    private static void sendWeaponsPage1(ServerCommandSource source) {
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("WEAPONS:").formatted(Formatting.RED, Formatting.BOLD));
 
@@ -96,6 +98,21 @@ public class VibiecesCommand {
                 "Max Level: 3, Incompatible with Vampire, Lifesteal, Sharper");
     }
 
+    private static void sendWeaponsPage2(ServerCommandSource source) {
+        source.sendMessage(Text.literal(""));
+        source.sendMessage(Text.literal("WEAPONS 2:").formatted(Formatting.RED, Formatting.BOLD));
+
+        sendEnchantmentEntry(source, "Glacier",
+                "Slows targets and has chance to trap them in ice",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 2");
+
+        sendEnchantmentEntry(source, "Blessed",
+                "5% chance to remove all bad effects, Level 2 adds Regeneration",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 2, Incompatible with Amplifier");
+    }
+
     private static void sendToolsPage(ServerCommandSource source) {
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("AXES:").formatted(Formatting.DARK_RED, Formatting.BOLD));
@@ -109,6 +126,11 @@ public class VibiecesCommand {
                 "Launch upward when attacking while crouching and offground (axe only)",
                 "End City & Nether Fortress chests",
                 "Max Level: 2");
+
+        sendEnchantmentEntry(source, "Shockwave",
+                "Deals area damage when falling 10+ blocks (axe only)",
+                "Enchanting, Villagers, Random Looting",
+                "Max Level: 1");
 
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("BOWS:").formatted(Formatting.DARK_GREEN, Formatting.BOLD));
@@ -125,6 +147,16 @@ public class VibiecesCommand {
                 "Creates explosion when mining blocks",
                 "Enchanting Table, Villager Trades",
                 "Max Level: 2");
+
+        sendEnchantmentEntry(source, "Energizing",
+                "Gives Haste effect while holding",
+                "Structure chests only",
+                "Max Level: 2 Haste I/II");
+
+        sendEnchantmentEntry(source, "Gamble",
+                "25% chance to upgrade nearby ores, fails turn to coal ore",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 1, 20min cooldown");
     }
 
     private static void sendArmorPage1(ServerCommandSource source) {
@@ -140,6 +172,16 @@ public class VibiecesCommand {
                 "Removes Mining Fatigue effect",
                 "Enchanting Table, Villager Trades",
                 "Max Level: 1");
+
+        sendEnchantmentEntry(source, "Antitoxin",
+                "Removes Poison and Wither effects",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 1");
+
+        sendEnchantmentEntry(source, "Shadow",
+                "Blinds players for 10 seconds",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 1, 45 second cooldown");
 
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("CHESTPLATES:").formatted(Formatting.GREEN, Formatting.BOLD));
@@ -177,6 +219,11 @@ public class VibiecesCommand {
                 "Adds +1 protection per level stacks with Protection",
                 "Warden drop 50%, Each level has a diff drop chance.",
                 "Max Level: 4");
+
+        sendEnchantmentEntry(source, "Inferno",
+                "Sets nearby enemies on fire",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 3, 1-2.5 block radius");
 
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("BOOTS:").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD));

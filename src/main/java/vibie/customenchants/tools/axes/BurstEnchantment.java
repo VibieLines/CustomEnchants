@@ -55,7 +55,7 @@ public class BurstEnchantment extends Enchantment {
                     float charge = player.getAttackCooldownProgress(0.5f);
 
                     if (charge > 0.5f) {
-                        float launchPower = charge * 1.0f * level;
+                        float launchPower = charge * 1.2f * level;
 
                         player.setVelocity(player.getVelocity().x, launchPower, player.getVelocity().z);
                         player.velocityModified = true;

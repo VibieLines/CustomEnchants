@@ -54,7 +54,7 @@ public class LifestealEnchantment extends Enchantment {
                     int level = EnchantmentHelper.getLevel(ModEnchantments.LIFESTEAL, weapon);
 
                     if (level > 0) {
-                        float healAmount = 1.0f * level;
+                        float healAmount = 0.75f * level;
 
                         int siphonLevel = EnchantmentHelper.getLevel(ModEnchantments.SIPHON, weapon);
                         if (siphonLevel > 0) {

@@ -70,7 +70,7 @@ public class BerserkerEnchantment extends Enchantment {
     }
 
     private static int getStrengthLevelForHealth(float health) {
-        if (health <= 4.0f) return 2;
+         if (health <= 6.0f) return 2;
         if (health <= 8.0f) return 1;
         if (health <= 14.0f) return 0;
         return -1;

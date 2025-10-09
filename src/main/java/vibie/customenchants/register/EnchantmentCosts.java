@@ -33,6 +33,14 @@ public class EnchantmentCosts {
         ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "revive"), 20);
         ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "endershift"), 7);
         ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "curse_of_weakness"), 1);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "shadow"), 8);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "antitoxin"), 3);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "inferno"), 6);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "shockwave"), 15);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "energizing"), 10);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "gamble"), 12);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "glacier"), 4);
+        ENCHANTMENT_COSTS.put(new Identifier(Vibieces.MOD_ID, "blessed"), 7);
 
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "lifesteal"), 3);
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "amplifier"), 2);
@@ -57,6 +65,14 @@ public class EnchantmentCosts {
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "revive"), 5);
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "endershift"), 2);
         BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "curse_of_weakness"), 1);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "shadow"), 3);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "antitoxin"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "inferno"), 3);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "shockwave"), 4);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "energizing"), 3);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "gamble"), 4);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "glacier"), 2);
+        BASE_COSTS.put(new Identifier(Vibieces.MOD_ID, "blessed"), 2);
     }
 
     public static int getCost(Identifier enchantmentId) {
