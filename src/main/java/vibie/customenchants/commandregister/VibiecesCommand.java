@@ -225,6 +225,11 @@ public class VibiecesCommand {
                 "Enchanting Table, Villager Trades",
                 "Max Level: 3, 1-2.5 block radius");
 
+        sendEnchantmentEntry(source, "Swift",
+                "Makes u faster by 3% each level",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 3");
+
         source.sendMessage(Text.literal(""));
         source.sendMessage(Text.literal("BOOTS:").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD));
 
@@ -242,6 +247,11 @@ public class VibiecesCommand {
                 "Automatically teleports you away when below 3 hearts",
                 "Enchanting Table, Villager Trades",
                 "Max Level: 3");
+
+        sendEnchantmentEntry(source, "Springs",
+                "Gives you jumpboost",
+                "Enchanting Table, Villager Trades",
+                "Max Level: 2");
     }
 
     private static void sendCursesPage(ServerCommandSource source) {
